@@ -1,0 +1,258 @@
+---
+title: EJERCICIOS DE APLICACION EMPRESA "CREACIONES JUVENILES"
+author: "GRUPO 3"
+format: html
+fecha: 23/10/2026
+bibliography: "C:/Users/Hp/Documents/GRUPO 3/bibliografia (1).bib"
+nocite: '@*'
+---
+
+## EJERCICIOS DE APLICACION
+
+## Ecuación de demanda
+
+La empresa Creaciones Juveniles recibió un pedido de 300 overoles jean color negro cuando el precio de venta era de \$16,50 por unidad. Posteriormente, al aumentar el precio a \$22,50 por unidad, la cantidad solicitada disminuyó a 260 overoles.
+
+Determine la ecuación de demanda suponiendo que la relación entre el precio y la cantidad demandada es lineal.
+
+## Identificar los datos
+
+```{r}
+Q1 <- 300
+P1 <- 16.50
+
+Q2 <- 260
+P2 <- 22.50
+```
+
+## Calcular la pendiente
+
+Utilizamos la fórmula:
+
+$$m=\frac{y_2-y_1}{x_2-X_1}$$
+
+La pendiente obtenida es negativa (m=-0,15), lo que indica que existe una relación inversa entre el precio y la cantidad demandada. Al aumentar el precio, los clientes compran menos unidades.
+
+```{r}
+m <- (P2 - P1)/(Q2 - Q1)
+m
+```
+
+## Calcular el intercepto
+
+Usamos la ecuación
+
+$$p=mq+b$$
+
+```{r}
+b <- P1 - m*Q1
+b
+```
+
+El intercepto representa el valor de la función cuando la cantidad demandada es igual a cero. Este valor permite completar la ecuación lineal de demanda.
+
+## Obtener la ecuación de demanda
+
+Sustituyendo los valores de m y b
+
+$$p=0,15q+61,5$$
+
+```{r}
+cat("Ecuación de demanda: P =", m, "*Q +", b)
+```
+
+La ecuación obtenida describe matemáticamente el comportamiento de la demanda de overoles jean color negro y permite estimar el precio para diferentes cantidades demandadas.
+
+## Tabla de valores
+
+```{r}
+Q <- c(260, 270, 280, 290, 300)
+P <- -0.15*Q + 61.5
+
+tabla <- data.frame(
+  Cantidad_Demandada = Q,
+  Precio = P
+)
+
+tabla
+```
+
+La tabla permite observar cómo el precio disminuye conforme aumenta la cantidad demandada, reflejando el comportamiento esperado de una función de demanda.
+
+## Gráfica de la demanda
+
+```{r}
+# Función de demanda
+p <- function(q){
+  -0.15*q + 61.5
+}
+
+# Rango de cantidades
+q <- 250:310
+
+# Gráfico
+plot(q, p(q),
+     type = "l",
+     lwd = 3,
+     col = "orange",
+     main = "Demanda de Overoles Jean Color Negro",
+     xlab = "Cantidad Demandada (Q)",
+     ylab = "Precio ($)")
+
+# Puntos del ejercicio
+points(c(300,260),
+       c(16.5,22.5),
+       pch = 19,
+       col = "red",
+       cex = 1.5)
+
+# Etiquetas
+text(c(300,260),
+     c(16.5,22.5),
+     labels = c("(300,16.50)", "(260,22.50)"),
+     pos = 3,
+     col = "darkred")
+
+# Cuadrícula
+grid()
+
+# Leyenda
+legend("topright",
+       legend = c("Demanda"),
+       fill = c("orange"))
+```
+
+La gráfica presenta una línea descendente, lo que confirma que existe una relación inversa entre el precio y la cantidad demandada. A medida que el precio aumenta, la demanda disminuye.
+
+## Análisis
+
+La ecuación de demanda obtenida es:
+
+$$p=-0,15q+61.5$$
+
+Esta ecuación muestra que existe una relación inversa entre el precio y la cantidad demandada. Cuando el precio de los overoles jean color negro aumenta, la cantidad solicitada por los clientes disminuye. Asimismo, si el precio baja, la demanda tiende a incrementarse.
+
+La gráfica presenta una tendencia descendente, lo que confirma el comportamiento normal de la demanda. Por ello, **Creaciones Juveniles** puede utilizar esta ecuación para estimar la cantidad que podría vender a diferentes niveles de precio y apoyar la toma de decisiones comerciales.
+
+## Ecuación de oferta
+
+La empresa Creaciones Juveniles recibió un pedido de la empresa Tecnoacces para la confección de pantalones de guardia. Cuando el precio de venta fue de \$18,00 por unidad, la empresa estuvo dispuesta a ofertar 220 pantalones. Posteriormente, al aumentar el precio a \$26,00 por unidad, la cantidad ofertada aumentó a 300 pantalones.
+
+Suponiendo que la relación entre el precio y la cantidad ofertada es lineal, determine la ecuación de oferta para los pantalones de guardia.
+
+## Identificar los datos
+
+```{r}
+Q1 <- 220
+P1 <- 18.00
+
+Q2 <- 300
+P2 <- 26.00
+```
+
+Se registraron dos observaciones de la oferta de pantalones de guardia. Cuando el precio fue de \$18,00, la empresa estuvo dispuesta a ofertar 220 unidades. Al aumentar el precio a \$26,00, la cantidad ofertada aumentó a 300 unidades.
+
+## Calcular la pendiente
+
+$$m=\frac{y_2-y_1}{x_2-X_1}$$
+
+```{r}
+m <- (P2 - P1)/(Q2 - Q1)
+m
+```
+
+La pendiente obtenida es positiva (m=0,1), lo que indica una relación directa entre el precio y la cantidad ofertada. Cuando el precio aumenta, la empresa está dispuesta a ofrecer más unidades al mercado.
+
+## Calcular el intercepto (b)
+
+Fórmula:
+
+$$p=mq+b$$
+
+```{r}
+b <- P1 - m*Q1
+b
+```
+
+El intercepto permite completar la ecuación lineal de oferta y representa el valor de la función cuando la cantidad ofertada es igual a cero.
+
+## Obtener la ecuación de oferta
+
+```{r}
+cat("P =", m, "*Q", b)
+```
+
+Ecuación de oferta
+
+$$p=0.1q-4$$La ecuación obtenida describe matemáticamente el comportamiento de la oferta de pantalones de guardia y permite estimar el precio para distintos niveles de producción.
+
+## Tabla de valores
+
+```{r}
+Q <- c(220, 240, 260, 280, 300)
+P <- 0.1*Q - 4
+
+tabla <- data.frame(
+  Cantidad_Ofertada = Q,
+  Precio = P
+)
+
+tabla
+```
+
+La tabla muestra que a medida que aumenta la cantidad ofertada, también aumenta el precio, reflejando el comportamiento característico de una función de oferta.
+
+## Grafica de la oferta
+
+```{r}
+# Función de oferta
+p <- function(q){
+  0.1*q - 4
+}
+
+# Valores de Q
+q <- 200:320
+
+# Gráfica
+plot(q, p(q),
+     type = "l",
+     lwd = 3,
+     col = "purple",
+     main = "Oferta de Pantalones de Guardia",
+     xlab = "Cantidad Ofertada (Q)",
+     ylab = "Precio ($)")
+
+# Puntos dados en el ejercicio
+points(c(220,300),
+       c(18,26),
+       pch = 19,
+       col = "red",
+       cex = 1.5)
+
+# Etiquetas
+text(c(220,300),
+     c(18,26),
+     labels = c("(220,18)", "(300,26)"),
+     pos = 3,
+     col = "darkred")
+
+# Cuadrícula
+grid()
+
+# Leyenda
+legend("topleft",
+       legend = "Oferta",
+       fill = "purple")
+```
+
+La gráfica presenta una línea ascendente, lo que confirma la relación directa entre el precio y la cantidad ofertada. A mayores precios, la empresa está dispuesta a ofertar una mayor cantidad de pantalones de guardia.
+
+## Análisis
+
+La ecuación de oferta obtenida es:
+
+$$p=0.1q-4$$
+
+La pendiente positiva indica que existe una relación directa entre el precio y la cantidad ofertada. Por lo tanto, cuando el precio de los pantalones de guardia aumenta, **Creaciones Juveniles** está dispuesta a ofertar una mayor cantidad de unidades.
+
+# Referencias
